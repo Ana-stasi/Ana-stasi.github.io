@@ -1,5 +1,5 @@
 h1 {
-	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-family: 'Old Standard TT', 'Times New Roman', Times, serif;
 	/* Шрифт заг */
 	margin-right: 5%;
 	/* внешний отступ справа */
@@ -39,7 +39,7 @@ li span {
 	color: grey;
 	/* Цвет текста */
 	font-size: 150%;
-	/* размер текста в списке ссылок  */
+    /* размер текста в списке ссылок  */
 }
 
 li span:hover {
@@ -124,7 +124,7 @@ a:hover {
 	line-height: 2em;
 	font-size: 140%;
 	font-weight: 500;
-	font-style: normal;
+	font-style: normal ;
 }
 
 #content {
