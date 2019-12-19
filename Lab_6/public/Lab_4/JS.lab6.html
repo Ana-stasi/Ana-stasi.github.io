@@ -1,0 +1,123 @@
+<HTML>
+
+<HEAD>
+    <meta charset="utf-8">
+    <TITLE>Галочки</TITLE>
+
+</HEAD>
+<script>
+//================================================ завдання 1 ======================================================
+    function grant(k, value, lan, zvit) {
+
+        var sum = 0;
+
+        if ((document.getElementsByName('course')[k].checked)) {
+
+            for (var i = 0; i < 3; i++) {
+                if (document.getElementsByName(value)[i].checked) {
+                    var s = Number(document.getElementsByName(value)[i].value);
+                    sum += s;
+                }
+                if (document.getElementsByName(lan)[i].checked) {
+                    var s = Number(document.getElementsByName(lan)[i].value);
+                    sum += s;
+                }
+                if (document.getElementsByName(zvit)[i].checked) {
+                    var s = Number(document.getElementsByName(zvit)[i].value);
+                    sum += s;
+                }
+            }
+        }
+        return sum;
+    }
+
+    function summ() {
+        var sum_global = grant(0, 'value1', 'lan1', 'zvit1') + grant(1, 'value2', 'lan2', 'zvit2') + grant(2, 'value3', 'lan3', 'zvit3');
+        return sum_global;
+    }
+</script>
+
+<BODY>
+    <h2 align="center"> Лабораторна робота 6</h2>
+    <hr color=" violet" width="20%">
+    <u style="color: rgb(170, 5, 148)">
+        <h4 style="background-color:rgb(255, 198, 241)"> 1.Cценарій обробки анкети слухача курсів. Користувач може
+            обрати із списку курсів
+            конкретний курс, його тривалість, мову роботи з викладачем, форму звітності.<br> Залежно
+            від цих параметрів визначається вартість окремого курсу і вартість всього навчання. </h4>
+    </u>
+    <h2 align="center" style="color:rgb(243, 125, 145)">Анкета</h2>
+    <form name="form1">
+        <hr color="red">
+        <h3 style="color:rgb(240, 14, 82)"><u>Виберіть курс:</u></h3>
+        <hr color="red">
+        <h4 style="color:crimson"><input type="checkbox" name="course">HTML</h4>
+
+        <p style="color:rgb(53, 121, 247)"><u>Виберітьтривалість курсу (кількість занять):</u></p>
+        <input type="radio" name="value1" value=1000>10<br>
+        <input type="radio" name="value1" value=2000>20 <br>
+        <input type="radio" name="value1" value=3000>30
+
+        <p style="color:rgb(5, 69, 189)"><u>Виберіть мову роботи з викладачем:</u></p>
+        <input type="radio" name="lan1" value=100>українська<br>
+        <input type="radio" name="lan1" value=500>англійська<br>
+        <input type="radio" name="lan1" value=200>pocійська<br>
+
+        <p style="color:rgb(3, 38, 104)"><u>Виберіть форму звітності:</u></p>
+        <input type="radio" name="zvit1" value=0>без звітності<br>
+        <input type="radio" name="zvit1" value=10>онлайн<br>
+        <input type="radio" name="zvit1" value=20>бланки паперу<br><br>
+
+        <hr color="red">
+
+        <h4 style="color:crimson"><input type="checkbox" name="course">CSS </h4>
+        <p style="color:rgb(133, 248, 143)"><u>Виберіть тривалість курсу (кількість занять):</u></p>
+        <input type="radio" name="value2" value=2500>10<br>
+        <input type="radio" name="value2" value=5000>20 <br>
+        <input type="radio" name="value2" value=7500>30
+
+        <p style="color:rgb(30, 252, 48)"><u>Виберіть мову роботи з викладачем:</u></p>
+        <input type="radio" name="lan2" value=250>українська<br>
+        <input type="radio" name="lan2" value=1250>англійська<br>
+        <input type="radio" name="lan2" value=500>pocійська<br>
+
+        <p style="color:rgb(3, 119, 12)"><u>Виберіть форму звітності:</u></p>
+        <input type="radio" name="zvit2" value=0>без звітності<br>
+        <input type="radio" name="zvit2" value=10>онлайн<br>
+        <input type="radio" name="zvit2" value=20>бланки паперу<br><br>
+
+        <hr color="red">
+        <h4 style="color:crimson"><input type="checkbox" name="course">JavaScript<br></h4>
+        <p style="color:rgb(204, 206, 95)"><u>Виберіть тривалість курсу (кількість занять):</u></p>
+        <input type="radio" name="value3" value=3000>10<br>
+        <input type="radio" name="value3" value=6000>20 <br>
+        <input type="radio" name="value3" value=9000>30<br>
+
+        <p style="color:rgb(196, 199, 16)"><u>Виберіть мову роботи з викладачем:</u></p>
+        <input type="radio" name="lan3" value=300>українська<br>
+        <input type="radio" name="lan3" value=1500>англійська<br>
+        <input type="radio" name="lan3" value=600>pocійська<br>
+
+        <p style="color:rgb(141, 143, 5)"><u>Виберіть форму звітності:</u></p>
+        <input type="radio" name="zvit3" value=0>без звітності<br>
+        <input type="radio" name="zvit3" value=10>онлайн<br>
+        <input type="radio" name="zvit3" value=20>бланки паперу<br><br>
+
+        <hr color="red">
+        <input type="button" style="color:rgb(53, 121, 247)" value="Обчислили вартість курсу HTML"
+            onClick="form1.html.value = grant(0,'value1','lan1','zvit1')">
+        <input type="Text" size=10 name="html" value=""><br>
+        <input type="button" style="color:rgb(133, 248, 143)" value="Обчислили вартість курсу CSS"
+            onClick="form1.css.value = grant(1,'value2','lan2','zvit2')">
+        <input type="Text" size=10 name="css" value=""><br>
+        <input type="button" style="color:rgb(204, 206, 95)" value="Обчислили вартість курсу JS"
+            onClick="form1.js.value = grant(2,'value3','lan3','zvit3')">
+        <input type="Text" size=10 name="js" value=""><br>
+        <input type="button" style="color:crimson" value="Вартість всього навчання" onClick="form1.zag.value = summ()">
+        <input type="Text" size=10 name="zag" value=""><br>
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="reset" value="Скасувати">
+    </form>
+    </FORM>
+</BODY>
+
+</HTML>

@@ -1,0 +1,11 @@
+ul.primary-menu li {
+	display: inline-flex;
+	/* Отображать как строчный элемент */
+	margin-right: 2%;
+	/* Отступ слева */
+	margin-bottom: 0%;
+	/*  отступ снизу*/
+	padding: 0%;
+	/* Поля вокруг текста */
+}
+

@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+<script language="JavaScript"> 
+//================================================ завдання 1 ======================================================
+function check_n(form) {
+                if (form.name_.value == "")
+                alert("Не залишайте пустим")
+                else {
+                    if(form.name_.value.indexOf(' ') > -1 
+                    || form.name_.value.indexOf('.') > -1 
+                    || form.name_.value.indexOf(',') > -1
+                    || form.name_.value.indexOf('_') > -1 
+                    || form.name_.value.indexOf('@') > -1 
+                    || /[^[0-9]/.test(form.name_.value) == 0)
+                        alert("Не використовуйте пробiл та iншi символи");
+                    else
+                        alert("Форму заповнено коректно");
+                }
+               } 
+//================================================ завдання 2 ======================================================
+function email(form) {
+            if (form.email_.value == "" || form.email_.value.indexOf('@', 0) == -1 || form.email_.value.indexOf('.', 0) == -1 
+            || form.email_.value.indexOf(',', 0) > -1 || form.email_.value.indexOf(' ', 0) > -1 || form.email_.value.indexOf('%', 0) > -1) 
+                alert("Неправильний e-mail");
+            else alert("Все вiрно");
+            }
+//================================================ завдання 3 ======================================================
+function check(input) {
+        var ok = true;
+        for (var i = 0; i < input.length; i++) {
+            var chr = input.charAt(i);
+            var found = false;
+            for (var j = 1; j < check.length; j++) {
+                if (chr == check[j]) found = true;
+            }
+            if (!found) ok = false;
+        }
+        return ok;
+    }
+    function test(form) {
+        var str = form.telephone.value
+            if (form.telephone.value == "")
+                alert("Жодних данних не було введено ")
+                else {
+                    if(form.telephone.value.indexOf('.') > -1 || form.telephone.value.indexOf(',') > -1 || form.telephone.value.indexOf('_') > -1 
+                    || form.telephone.value.indexOf('@') > -1)
+                        alert("Не використовуйте ніякі символи окрім «+»");
+                    else if(form.telephone.value.length <13 || form.telephone.value.length >13)
+                        alert("Кількість цифр в вашому номері телефону повинно бути 12")
+                    else if(str[1] != "3")
+                        alert("Використовуйте код України: +380")
+                    else
+                        alert("Форму заповнено коректно");
+                }
+        }
+    
+</script>
+
+<body>
+
+        <h2 align="center"> Лабораторна робота 12</h2>
+        <hr color=" violet" width="20%">
+        <u style="color: rgb(170, 5, 148)">
+                <h4 style="background-color:rgb(255, 198, 241)">1.Уточнити контроль коректності імені користувача на ваш розсуд.</h4></u>
+    <form name="form1">
+       <p>Введіть ім'я:<input type="text" name="name_"></p>
+       <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="button" name="check_name" value="Перевiрити" onclick="check_n(this.form)">
+    </form>
+
+
+    <form name="form2">
+        <u style="color: rgb(170, 5, 148)">
+            <h4 style="background-color:rgb(255, 205, 243)"> 2.Уточнити контроль коректності адреси електронної пошти на ваш
+            розсуд.<br></h4></u>
+            <p>Введіть Ваш E-mail:<input type="text" name="email_"></p>
+            <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="button" name="check_email" value="Перевiрити" onclick="email(this.form)">
+    </form>
+
+    <u style="color: rgb(170, 5, 148)">
+        <h4 style="background-color:rgb(255, 226, 248)">3. Уточнити контроль коректності телефонного номеру на ваш розсуд.<br></h4>
+    </u>
+    <form name ="form3">
+        <p>Введіть Ваш номер телефону:
+        <input type="text" name="telephone" value=""></p>
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="button" value="Перевірити" onClick="test(this.form)"> 
+    </form>
+
+</body>
+
+</html>

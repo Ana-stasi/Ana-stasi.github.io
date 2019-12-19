@@ -1,0 +1,188 @@
+<HTML>
+
+<HEAD>
+    <meta charset="utf-8">
+    <TITLE> Обробка дат</TITLE>
+</HEAD>
+<script language="JavaScript">
+    //================================================ завдання 1 ======================================================
+    function nedelya(obj) {
+        var now = new Date();
+        var y = Number(obj.fyear.value);
+        var month = Number(document.getElementById("fmonth").selectedIndex);
+        var day = Number(obj.fday.value);
+        now.setYear(y);
+        now.setMonth(month);
+        now.setDate(day);
+        var start = new Date(now.getFullYear(), 0, 0);// час початку поточного року
+        var start1;// змінна дня  початку 2-го тижня
+        if (start.getDay() == 0) start1 = new Date(now.getFullYear(), 0, 7);
+        else if (start.getDay() == 1) start1 = new Date(now.getFullYear(), 0, 6);
+        else if (start.getDay() == 2) start1 = new Date(now.getFullYear(), 0, 5);
+        else if (start.getDay() == 3) start1 = new Date(now.getFullYear(), 0, 4);
+        else if (start.getDay() == 4) start1 = new Date(now.getFullYear(), 0, 3);
+        else if (start.getDay() == 5) start1 = new Date(now.getFullYear(), 0, 2);
+        else if (start.getDay() == 6) start1 = new Date(now.getFullYear(), 0, 1);
+        var diff = now - start1;
+        var oneDay = 1000 * 60 * 60 * 24;
+        var day = Math.floor(diff / oneDay);
+        var week = 1 + Math.ceil(day / 7);
+        obj.week.value = week;
+    }
+    //================================================ завдання 2 ======================================================
+    function znaki_zodiaka(obj) {
+        var day = Number(obj.sday.value);
+        var month = Number(document.getElementById("smonth").selectedIndex);
+        var znakk;
+        if ((month == 2 && day >= 21 && day <= 31) || (month == 3 && day >= 1 && day <= 20)) znakk = znaki(0);
+        else if ((month == 3 && day >= 21 && day <= 31) || (month == 4 && day >= 1 && day <= 21)) znakk = znaki(1);
+        else if ((month == 4 && day >= 22 && day <= 31) || (month == 5 && day >= 1 && day <= 21)) znakk = znaki(2);
+        else if ((month == 5 && day >= 22 && day <= 31) || (month == 6 && day >= 1 && day <= 23)) znakk = znaki(3);
+        else if ((month == 6 && day >= 24 && day <= 31) || (month == 7 && day >= 1 && day <= 23)) znakk = znaki(4);
+        else if ((month == 7 && day >= 24 && day <= 31) || (month == 8 && day >= 1 && day <= 23)) znakk = znaki(5);
+        else if ((month == 8 && day >= 24 && day <= 31) || (month == 9 && day >= 1 && day <= 23)) znakk = znaki(6);
+        else if ((month == 9 && day >= 24 && day <= 31) || (month == 10 && day >= 1 && day <= 22)) znakk = znaki(7);
+        else if ((month == 10 && day >= 23 && day <= 31) || (month == 11 && day >= 1 && day <= 21)) znakk = znaki(8);
+        else if ((month == 11 && day >= 22 && day <= 31) || (month == 0 && day >= 1 && day <= 20)) znakk = znaki(9);
+        else if ((month == 0 && day >= 21 && day <= 31) || (month == 1 && day >= 1 && day <= 19)) znakk = znaki(10);
+        else if ((month == 1 && day >= 20 && day <= 29) || (month == 2 && day >= 1 && day <= 20)) znakk = znaki(11);
+        obj.znak.value = znakk;
+    }
+
+    function znaki(znak) {
+        var s;
+        switch (znak) {
+            case 0: s = "Овен (21.03 - 20.04)"; break;
+            case 1: s = "Телець (21.04 — 21.05)"; break;
+            case 2: s = "Близнюки (22.05 — 21.06)"; break;
+            case 3: s = "Рак (22.06 — 23.07)"; break;
+            case 4: s = "Лев (24.07 — 23.08)"; break;
+            case 5: s = "Діва (24.08 — 23.09)"; break;
+            case 6: s = "Терези (24.09 — 23.10)"; break;
+            case 7: s = "Скорпіон (24.10 — 22.11)"; break;
+            case 8: s = "Стрілець (23.11 — 21.12)"; break;
+            case 9: s = "Козеріг (22.12 — 20.01)"; break;
+            case 10: s = "Водолій (21.01 — 19.02)"; break;
+            case 11: s = "Риби (20.02 — 20.03)"; break;
+        }
+        return s
+    }
+
+    //================================================ завдання 3 ======================================================
+    function symbol_of_a_year(obj) {
+        var y = Number(obj.tyear.value);
+        var amount = 0;
+        var year = 0;
+        while (year <= y) {
+            year += 12;
+            amount++;
+        }
+        var diff1 = amount;
+        while (diff1 >= 5) {
+            diff1 -= 5;
+        }
+        var a;
+        if (diff1 == 1) a = "зелений(a)";
+        else if (diff1 == 2) a = "червоний(a)";
+        else if (diff1 == 3) a = "жовтий(a)";
+        else if (diff1 == 4) a = "білий(a)";
+        else if (diff1 == 0) a = "чорний(a)";
+
+        while (y >= 12) {
+            y -= 12;
+        }
+        var b;
+        if (y == 4) b = "пацюк";
+        else if (y == 5) b = "корова";
+        else if (y == 6) b = "тигр";
+        else if (y == 7) b = "заєць";
+        else if (y == 8) b = "дракон";
+        else if (y == 9) b = "змія";
+        else if (y == 10) b = "кінь";
+        else if (y == 11) b = "вівця";
+        else if (y == 0) b = "мавпа";
+        else if (y == 1) b = "курка";
+        else if (y == 2) b = "собака";
+        else if (y == 3) b = "свиня";
+        obj.znak1.value = a + " " + b;
+
+    }
+</script>
+
+<BODY>
+    <h2 align="center"> Лабораторна робота 9</h2>
+    <hr color=" violet" width="20%">
+    <u style="color: rgb(170, 5, 148)">
+        <h4 style="background-color:rgb(255, 198, 241)"> 1.Cценарій, який за заданою датою визначає номер тижня в
+            році.<br></h4>
+    </u>
+    <FORM name="form1">
+        Вкажіть рік: <input type="text" size=8 name="fyear">
+        Вкажіть місяць:
+        <select id="fmonth" name="fmonth" size=1>
+            <option value=0>січень
+            <option value=1>лютий
+            <option value=2>березень
+            <option value=3>квітень
+            <option value=4>травень
+            <option value=5>червень
+            <option value=6>липень
+            <option value=7>серпень
+            <option value=8>вересень
+            <option value=9>жовтень
+            <option value=10>листопад
+            <option value=11>грудень
+        </select>
+        Вкажіть число: <input type="number" min="1" max="31" size=8 name="fday">
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="button"
+            value="Який тиждень року?" onClick="nedelya(form1)">
+        <input type="text" name="week">
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="reset" value="Скасувати">
+    </FORM>
+
+    <u style="color: rgb(170, 5, 148)">
+        <h4 style="background-color:rgb(255, 205, 243)">2.Cценарій, який за датою народження особи визначає знак
+            зодіаку.<br></h4>
+    </u>
+    <h4> Вкажіть дату свого народження:</h4>
+    <form name="form2">
+        <input type="number" min="1" max="31" size=8 name="sday">
+        <select id="smonth" name="smonth" size=1>
+            <option value=0>січня
+            <option value=1>лютого
+            <option value=2>березня
+            <option value=3>квітня
+            <option value=4>травня
+            <option value=5>червня
+            <option value=6>липня
+            <option value=7>серпня
+            <option value=8>вересня
+            <option value=9>жовтня
+            <option value=10>листопада
+            <option value=11>грудня
+        </select>
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="button" value="Знак зодіаку"
+            onClick="znaki_zodiaka(form2)">
+        <input type="text" name="znak" size="30">
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="reset" value="Скасувати">
+    </form>
+
+    <u style="color: rgb(170, 5, 148)">
+        <h4 style="background-color:rgb(255, 226, 248)">3.Cценарій, який за заданою датою визначає назву року за
+            східним календарем.<br></h4>
+    </u>
+    <p>В східному календарі є 60-річний цикл із п’яти 12-річних підциклів.
+        Підцикли позначаються кольорами: зелений, червоний, жовтий, білий, чорний.
+        В кожному підциклі роки мають назви тварин: пацюка, корови, тигра, зайця, дракона, змії, коня, вівці, мавпи,
+        курки, собаки і свині.
+        Наприклад, 1984 рік - рік зеленого пацюка - є початком чергового цикла.</p>
+    <form name="form3">
+        Вкажіть рік: <input type="number" size=8 name="tyear">
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="button" value="Символ року"
+            onClick="symbol_of_a_year(form3)">
+        <input type="text" name="znak1" size="30">
+        <input style="color: rgb(76, 116, 248);background-color: rgb(200, 220, 255)" type="reset" value="Скасувати">
+    </form>
+</BODY>
+
+</HTML>
