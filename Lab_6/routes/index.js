@@ -1,18 +1,27 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+//роутинг (прописываем путь к каждому файлику)
 router.get('/', function(req, res, next) {
-  res.sendfile('..public/index.html');
+  res.sendFile('../public/index.html');
+});
+router.get('/', function(req, res, next) {
+  res.sendFile('../public/file1.html');
+});
+router.get('/', function(req, res, next) {
+  res.sendFile('../public/file2.html');
+});
+router.get('/', function(req, res, next) {
+  res.sendFile('../public/file3.html');
+});
+router.get('/', function(req, res, next) {
+  res.sendFile('../public/index.html');
+});
+router.get('/', function(req, res, next) {
+  res.sendFile('../public/lab.html');
+});
+router.get('/stylesheets/main.css', function(req, res) {
+  res.sendFile(__dirname + "/" + "main.css");
 });
 
-router.get('/favicon.ico', (req, res) => {
-res.sendfile('');
-})
-router.get('/', function(req, res, next) {
-  res.sendfile('..public/lab_6.html');
-});
-router.get('/', (req, res) => {
-  res.sendfile('../public/script.js');
-})
 module.exports = router;
