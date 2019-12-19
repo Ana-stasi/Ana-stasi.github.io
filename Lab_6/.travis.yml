@@ -1,6 +1,0 @@
-script:
-  - npm test
-notifications:
-  email: false
-deploy:
-  app: "Node lab"
